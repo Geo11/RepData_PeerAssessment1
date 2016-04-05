@@ -59,7 +59,7 @@ steps_day<-group_by(cc,date)%>% summarise(stepsday=sum(steps))
 hist(steps_day$stepsday,xlab="Steps per day",main="Total number of steps taken per day",col="red")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
+![plot1](Plot/plot1.png)<!-- -->
 
 ```r
 # Calculate the media and the median of the total number of steps taken per day 
@@ -97,7 +97,7 @@ Then plot the average steps by interval.
 plot(stepsint~interval,data=steps_interval,type="l",xlab="Interval",ylab="Average number of steps",main="Average daily activity pattern")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+![plot2](Plot/plot2.png)<!-- -->
 
 Now, find the interval with most steps.
 
@@ -163,7 +163,7 @@ idsteps_day<-group_by(complete_data,date)%>% summarise(stepsday=sum(steps))
 hist(idsteps_day$stepsday,xlab="Steps per day",main="Total number of steps taken per day with imputed data",col="blue")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
+![plot3](Plot/plot3.png)<!-- -->
 
 ```r
 # Calculate the media and the median of the total number of steps taken per day 
@@ -196,4 +196,4 @@ steps_total<-group_by(complete_data,interval,week)%>% summarise(steps=mean(steps
 xyplot(steps_total$steps ~ steps_total$interval|steps_total$week, main="Average Steps per Day by Interval",xlab="Interval", ylab="Steps",layout=c(1,2), type="l")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
+![plot4](Plot/plot4.png)<!-- -->
