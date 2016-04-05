@@ -25,6 +25,8 @@ cc<-data[complete.cases(data),]
 steps_day<-group_by(cc,date)%>% summarise(stepsday=sum(steps))
 # Plot the histogram
 hist(steps_day$stepsday,xlab="Steps per day",main="Total number of steps taken per day",col="red")
+dev.copy(png,file="plot1.png")
+dev.off()
 # Calculate the media and the median of the total number of steps taken per day 
 mean(steps_day$stepsday)
 median(steps_day$stepsday)
@@ -45,6 +47,8 @@ Then plot the average steps by interval.
 
 ```{r, echo=TRUE}
 plot(stepsint~interval,data=steps_interval,type="l",xlab="Interval",ylab="Average number of steps",main="Average daily activity pattern")
+dev.copy(png,file="plot2.png")
+dev.off()
 ```
 
 Now, find the interval with most steps.
@@ -96,6 +100,8 @@ Contruct the histogram with the new dataset and recalculate the mean and the med
 ```{r, echo=TRUE}
 idsteps_day<-group_by(complete_data,date)%>% summarise(stepsday=sum(steps))
 hist(idsteps_day$stepsday,xlab="Steps per day",main="Total number of steps taken per day with imputed data",col="blue")
+dev.copy(png,file="plot3.png")
+dev.off()
 # Calculate the media and the median of the total number of steps taken per day 
 mean(idsteps_day$stepsday)
 median(idsteps_day$stepsday)
@@ -112,4 +118,6 @@ complete_data$week <- as.factor(ifelse(is.element(weekdays(complete_data$date),d
 # Calculate the average of steps by interval and type the day
 steps_total<-group_by(complete_data,interval,week)%>% summarise(steps=mean(steps))
 xyplot(steps_total$steps ~ steps_total$interval|steps_total$week, main="Average Steps per Day by Interval",xlab="Interval", ylab="Steps",layout=c(1,2), type="l")
+dev.copy(png,file="plot4.png")
+dev.off()
 ```
